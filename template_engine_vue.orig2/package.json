@@ -1,0 +1,38 @@
+{
+  "name": "template_engine_vue",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "vite preview",
+    "build": "vite build",
+    "test:unit": "vitest --environment jsdom",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "dev": "vite",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "@mdi/font": "5.9.55",
+    "handlebars": "^4.7.7",
+    "pinia": "^2.0.14",
+    "roboto-fontface": "*",
+    "vue": "^3.2.36",
+    "vue-router": "^4.0.15",
+    "vuejs3-datepicker": "^1.0.6",
+    "vuetify": "^3.0.0-beta.0",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.0",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/test-utils": "^2.0.0",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "jsdom": "^19.0.0",
+    "prettier": "^2.5.1",
+    "vite": "^2.9.9",
+    "vite-plugin-vuetify": "^1.0.0-alpha.0",
+    "vitest": "^0.13.0",
+    "vue-cli-plugin-vuetify": "~2.5.1"
+  }
+}

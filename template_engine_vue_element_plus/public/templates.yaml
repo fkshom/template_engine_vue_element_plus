@@ -1,0 +1,53 @@
+templates:
+  - name: 作業通知1
+    label: 作業通知1
+    targets: ['a', 'b']
+    content: |
+      {{mentions_str}}
+      # 作業通知
+      {{description}}
+      日時：{{date}} {{time}}
+      作業場所：{{places_str}}
+      作業者：{{name}}
+      連作先：{{tel}}
+  - name: 作業通知2
+    label: 作業通知2
+    targets: ['a', 'b']
+    content: |
+      なし
+  - name: 作業通知3
+    label: 作業通知3
+    targets: ['a', 'b']
+    content: |
+      abc3
+      def3
+descriptions:
+  - title: 内容テンプレート1
+    text: |
+      下記作業を実施します。
+      - 作業1
+      - 作業2
+      影響範囲：
+      - 影響1
+      - 影響2
+  - title: 内容テンプレート2
+    text: |
+      下記作業を実施します
+      - 作業a
+      - 作業b
+      影響範囲：
+      - 影響a
+      - 影響b
+places:
+  - 場所1
+  - 場所2
+mentions:
+  - id: a
+    title: teamA
+    names: "@aa @ab"
+  - id: b
+    title: teamB
+    names: "@ba @bb"
+  - id: c
+    title: teamC
+    names: "@ca @cc"
