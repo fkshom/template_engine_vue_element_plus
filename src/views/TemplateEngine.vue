@@ -2,24 +2,22 @@
 import { ref, reactive, computed, watch, watchEffect } from "vue"
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
+import { useCookies } from "vue3-cookies";
 import Handlebars from 'handlebars'
 import { useTemplateStore } from '@/stores/templates'
 import type { Mention, MentionGroup } from '@/stores/templates'
 
+const { cookies } = useCookies()
+
 const templateStore = useTemplateStore()
 
-// useTemplateStore.load()
-// templateStore.loadSample()
+templateStore.load()
 
 // from store
 const templateItems = ref(templateStore.templates)
 const descriptionItems = ref(templateStore.descriptions)
 const mentionGroupItems = ref(templateStore.mentionGroups)
 const placesItems = ref(templateStore.places)
-// const templateItems = ref()
-// const descriptionItems = ref()
-// const mentionGroupItems = ref()
-// const placesItems = ref()
 
 // model
 const templateValue = ref()
@@ -52,8 +50,8 @@ const textInputOptions = ref({
 const timeFromValue = ref("")
 const timeToValue = ref("")
 const placesValue = ref([])
-const nameValue = ref("")
-const telValue = ref("")
+const nameValue = ref(cookies.get("name"))
+const telValue = ref(cookies.get("tel"))
 
 const copy_to_clipboard_message_shown = ref(false)
 const copy_to_clipboard = () => {
@@ -121,6 +119,7 @@ watch(templateValue, async (newTemplate, oldTemplate) => {
   placesValue.value = newTemplate.places
 })
 
+// when initial load
 watchEffect(() => {
   if(templateValue.value === undefined){
     templateValue.value = templateItems.value[0]
@@ -128,12 +127,12 @@ watchEffect(() => {
   if(descriptionValue.value === undefined){
     descriptionValue.value = descriptionItems.value[0]
   }
-  if(mentionGroupsValue.value === undefined){
-    mentionGroupsValue.value = mentionGroupItems.value[0]
-  }
-  if(placesValue.value === undefined){
-    placesValue.value = placesItems.value[0]
-  }
+})
+
+// save cookie
+watchEffect(() => {
+  cookies.set("name", nameValue.value)
+  cookies.set("tel", telValue.value)
 })
 </script>
 
